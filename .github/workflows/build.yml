@@ -33,7 +33,7 @@ jobs:
       # 步骤4: 打包成EXE文件
       - name: 打包程序
         run: |
-          pyinstaller --onefile --windowed --name "给女朋友的惊喜" main_v2.py
+          pyinstaller --onefile --windowed --name "小程序" main_v2.py
       
       # 步骤5: 上传生成的EXE文件
       - name: 上传程序文件
