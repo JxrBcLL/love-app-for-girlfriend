@@ -1,68 +1,48 @@
-name: 给女朋友的惊喜 - 自动打包
+name: 给女朋友的惊喜 - 自动打包程序
 
 # 触发条件
 on:
-  # 当代码推送到main分支时
+  # 当代码推送到main分支时触发
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   
-  # 当有Pull Request到main分支时
-  pull_request:
-    branches: [ "main" ]
-  
-  # 允许在GitHub页面上手动触发
+  # 允许在GitHub网页上手动触发
   workflow_dispatch:
-
-# 权限设置
-permissions:
-  contents: read
 
 # 工作流程
 jobs:
-  build:
-    # 运行在Windows最新版
+  # 作业名称
+  构建Windows程序:
+    # 运行环境：Windows最新版
     runs-on: windows-latest
     
     # 步骤
     steps:
-    # 1. 获取代码
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # 步骤1: 获取代码
+      - name: 获取代码
+        uses: actions/checkout@v3
       
-    # 2. 设置Python环境
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.10"
-        
-    # 3. 显示Python版本（用于调试）
-    - name: Display Python version
-      run: python -c "import sys; print(f'Python {sys.version}')"
+      # 步骤2: 设置Python环境
+      - name: 设置Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       
-    # 4. 安装依赖
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller==5.13.0
-        pip install pillow==10.1.0
-        
-    # 5. 打包成EXE
-    - name: Build executable
-      run: |
-        pyinstaller --onefile ^
-                    --windowed ^
-                    --name "一个小程序" ^
-                    --clean ^
-                    main_v2.py
-                    
-    # 6. 显示生成的文件
-    - name: List generated files
-      run: dir dist\
+      # 步骤3: 安装依赖
+      - name: 安装所需库
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install pillow
       
-    # 7. 上传生成的可执行文件
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: 一个小程序
-        path: dist/一个小程序.exe
-        retention-days: 7
+      # 步骤4: 打包成EXE文件
+      - name: 打包程序
+        run: |
+          pyinstaller --onefile --windowed --name "小程序" main_v2.py
+      
+      # 步骤5: 上传生成的EXE文件
+      - name: 上传程序文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: 小程序
+          path: dist/小程序.exe
