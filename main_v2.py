@@ -7,6 +7,8 @@ from math import sin, cos, pi
 ####
 
 
+
+
 class LoveApp:
     def __init__(self, root):
         self.root = root
