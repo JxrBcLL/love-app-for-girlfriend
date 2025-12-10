@@ -4,14 +4,11 @@ import random
 import time
 from math import sin, cos, pi
 
-####
-
-
 
 class LoveApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("邀约小程序")
+        self.root.title("小程序")
         self.root.geometry("600x650")
         self.root.configure(bg="#FFE4E1")
 
@@ -52,7 +49,7 @@ class LoveApp:
         # 问题
         question_label = tk.Label(
             main_frame,
-            text="这周五下班后要不要和我一起吃饭？",
+            text="这周五（12.12）是北京的初雪！！下班后小小见面一下好不好！",
             font=("Arial", 20),
             fg="#333333",
             bg="#FFE4E1",
@@ -120,7 +117,7 @@ class LoveApp:
         # 底部提示标签
         self.hint_label = tk.Label(
             bottom_hint_frame,
-            text="提示：点击'同意'我就告诉你你的圣诞礼物是啥～",
+            text="提示：点击'同意'可以领取冰箱贴（2选1）以及你的圣诞礼物1.0",
             font=("Arial", 16, "italic"),
             fg="#FF69B4",
             bg="#FFE4E1"
@@ -317,7 +314,7 @@ class LoveApp:
             "nonono",
             "又跑了！",
             "啊哈",
-            "哦莫",
+            "求你了，点下同意吧",
             "哦豁，没抓到！"
         ]
 
@@ -757,7 +754,7 @@ class LoveApp:
         # 底部信息
         info_label = tk.Label(
             self.root,
-            text="凭借密码：\njiangjiang0927\n领取圣诞礼物",
+            text="凭借密码：\ndengdeng0927\n领取你的圣诞礼物1.0",
             font=("Arial", 16),
             fg="#333333",
             bg="#FFE4E1",
